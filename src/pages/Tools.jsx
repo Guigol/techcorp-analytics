@@ -1,25 +1,28 @@
 import { useState } from "react";
 import ActionDropdown from "../components/ActionDropdown";
 import useTools from "../hooks/useTools";
+import { useSearch } from "../context/SearchContext"; // ✅ Import context
 
 export default function Tools() {
   const { tools, loading, error } = useTools(50);
+  const { search } = useSearch(); // Hook pour la searchbar globale
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  const statusColor = {
-    active: "bg-green-500 text-white",
-    expiring: "bg-orange-400 text-white",
-    unused: "bg-red-500 text-white",
-  };
-
-  if (loading) return <p className="p-6">Loading...</p>;
-  if (error) return <p className="p-6 text-red-500">Error loading tools</p>;
+  // Filtrer les outils selon le search
+  const filteredTools = (tools || []).filter(
+    (tool) =>
+      tool.name.toLowerCase().includes(search.toLowerCase()) ||
+      tool.owner_department.toLowerCase().includes(search.toLowerCase())
+  );
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = tools.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(tools.length / itemsPerPage);
+  const currentItems = filteredTools.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredTools.length / itemsPerPage); // pagination selon filteredTools
+
+  if (loading) return <p className="p-6">Loading...</p>;
+  if (error) return <p className="p-6 text-red-500">Error loading tools</p>;
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -38,37 +41,36 @@ export default function Tools() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-  {currentItems.map((item, idx) => (
-    <tr key={idx} className="hover:bg-gray-50">
-      <td className="px-6 py-4 whitespace-nowrap flex items-center gap-2">
-        <img src={item.icon_url} alt={item.name} className="w-6 h-6" />
-        <a href={item.website_url} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
-          {item.name}
-        </a>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">{item.owner_department}</td>
-      <td className="px-6 py-4 whitespace-nowrap">{item.active_users_count}</td>
-      <td className="px-6 py-4 whitespace-nowrap">€{item.monthly_cost}</td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <span
-          className={`px-2 py-1 rounded-full text-xs font-semibold ${
-            item.status === "active"
-              ? "bg-green-500 text-white"
-              : item.status === "expiring"
-              ? "bg-orange-400 text-white"
-              : "bg-red-500 text-white"
-          }`}
-        >
-          {item.status}
-        </span>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <ActionDropdown />
-      </td>
-    </tr>
-  ))}
-</tbody>
-
+            {currentItems.map((item, idx) => (
+              <tr key={idx} className="hover:bg-gray-50">
+                <td className="px-6 py-4 whitespace-nowrap flex items-center gap-2">
+                  <img src={item.icon_url} alt={item.name} className="w-6 h-6" />
+                  <a href={item.website_url} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                    {item.name}
+                  </a>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">{item.owner_department}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{item.active_users_count}</td>
+                <td className="px-6 py-4 whitespace-nowrap">€{item.monthly_cost}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                      item.status === "active"
+                        ? "bg-green-500 text-white"
+                        : item.status === "expiring"
+                        ? "bg-orange-400 text-white"
+                        : "bg-red-500 text-white"
+                    }`}
+                  >
+                    {item.status}
+                  </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <ActionDropdown />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
 

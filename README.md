@@ -1,76 +1,69 @@
-# Getting Started with Create React App
+# Internal Tools Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Internal Tools Dashboard** est une application React pour gérer et suivre les outils internes d’une organisation. Elle permet de visualiser les métriques, gérer les outils, et suivre les coûts et utilisateurs.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Quick Start
 
+### Prérequis
+- Node.js >= 18
+- npm ou yarn
+- Accès à l’API backend JSON Server : `https://tt-jsonserver-01.alt-tools.tech`
+
+### Installation
+1. Cloner le dépôt :
+
+
+https://github.com/Guigol/techcorp-analytics.git
+### `cd techcorp-analytics`
+
+2. Lancer l'application dans le navigateur :
+- Cliquer sur `http://localhost:3000`
+
+ou
+### `npm run dev`ou
+### `yarn dev`
+
+
+Lancer ensuite : 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Structure :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- L’application suit une architecture React fonctionnelle avec hooks et context :
 
-### `npm run build`
+Hooks
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- useTools : fetch des outils depuis l’API, pagination et gestion du loading/error
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Context
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- SearchContext : fournit la valeur du champ de recherche pour filtrer les outils
 
-### `npm run eject`
+Composants
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Dashboard : composant principal affichant les métriques et la liste des outils
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- AddToolModal : modal pour ajouter un nouvel outil
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- ToolDetailsModal : modal pour voir ou éditer un outil
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- ConfirmModal : modal pour confirmer des actions (toggle status, suppression)
 
-## Learn More
+UI
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- react-icons pour les icônes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- tailwindcss pour le style
 
-### Code Splitting
+- Dark mode et thème néon pour les métriques et la table
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-Project's structure :
-
+### Arborescence
+```
 src/
 ├── components/
 │   ├── Navbar.jsx
@@ -81,3 +74,74 @@ src/
 │   ├── Analytics.jsx
 │   └── Settings.jsx
 └── App.jsx
+```
+---
+
+## Navigation
+### Dashboard
+
+Vue principale avec :
+
+- Métriques clés : Budget, Active Tools, Departments, Cost per User
+
+- Liste des outils récents : filtrable et triable
+
+- Actions rapides : Ajouter, éditer, supprimer, toggle status
+
+### Tools
+
+- Page détaillée (via lien “View all tools →”) avec table complète de tous les outils
+
+- Actions disponibles sur chaque ligne : Voir détails, Modifier, Activer/Désactiver, Sélection pour action en masse (bulk toggle)
+
+## User Journey (Flow Utilisateur)
+
+```
+
++------------------+
+|  Dashboard       |
+|  (Metrics + List)|
++------------------+
+          |
+          v
++------------------+
+|  Search / Filter |
++------------------+
+          |
+          v
++------------------+
+|  Sort Columns    |
++------------------+
+          |
+          v
++------------------+          +------------------+
+|  Select Tool     |--------->| ToolDetailsModal |
+|  (Click View/Edit)|          +------------------+
++------------------+                  |
+          |                            v
+          |                  +------------------+
+          |                  | Edit Tool Form   |
+          |                  +------------------+
+          |
+          v
++------------------+
+| Bulk Actions     |
+| (Select multiple)|
++------------------+
+          |
+          v
++------------------+
+| ConfirmModal     |
+| (Toggle/Delete)  |
++------------------+
+          |
+          v
++------------------+
+| Updated Dashboard|
++------------------+
+
+```
+
+
+
+
