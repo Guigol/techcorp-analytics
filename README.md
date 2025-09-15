@@ -11,7 +11,7 @@
 - npm ou yarn
 - Accès à l’API backend JSON Server :
 `http://localhost:3001`
-Voir le README.md dans (server_json/README.md)
+- Pour l'install, voir le README.md dans :`server_json/README.md`
 
 
 ### Installation
