@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Tools from "./pages/Tools";
+import ToolDetails from "./pages/ToolDetails";
+import ToolEdit from "./pages/ToolEdit";
+import Analytics from "./pages/Analytics"
 import { SearchProvider } from "./context/SearchContext";
 
 function App() {
@@ -13,6 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/tools" element={<Tools />} />
+           <Route path="/tools/:id" element={<ToolDetails />} />
+          <Route path="/tools/:id/edit" element={<ToolEdit />} />
+          <Route path="/Analytics" element={<Analytics/>} />
         </Routes>
       </SearchProvider>
     </BrowserRouter>

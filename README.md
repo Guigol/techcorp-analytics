@@ -9,7 +9,10 @@
 ### Prérequis
 - Node.js >= 18
 - npm ou yarn
-- Accès à l’API backend JSON Server : `https://tt-jsonserver-01.alt-tools.tech`
+- Accès à l’API backend JSON Server :
+`http://localhost:3001`
+Voir le README.md dans (server_json/README.md)
+
 
 ### Installation
 1. Cloner le dépôt :

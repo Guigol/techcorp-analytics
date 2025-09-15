@@ -1,0 +1,12 @@
+
+
+services: 
+  json-server:
+   image: registry.alt-tools.tech/ressource_v2/test_technique/json_server
+   restart: always
+   networks:
+    - nginx-network
+
+networks:
+  nginx-network:
+    external: true

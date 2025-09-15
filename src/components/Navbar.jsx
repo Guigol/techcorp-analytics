@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className="flex items-center gap-4">
         <img src="/octopus.svg" alt="TechCorp" className="w-8 h-8" />
         <span className="font-bold text-xl text-gray-900 dark:text-gray-100">
-          TechCorp Analytics
+          TechCorp
         </span>
 
         <ul className="hidden md:flex gap-6 font-medium text-gray-700 dark:text-gray-200 ml-6">

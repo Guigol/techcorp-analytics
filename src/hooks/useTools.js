@@ -8,7 +8,7 @@ export default function useTools(limit = 10) {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://tt-jsonserver-01.alt-tools.tech/tools?_sort=updated_at&_order=desc&_limit=${limit}`)
+    axios.get(`http://localhost:3001/tools?_sort=updated_at&_order=desc&_limit=${limit}`)
       .then(res => {
         setTools(res.data);
         setLoading(false);
