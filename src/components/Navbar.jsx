@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center justify-between bg-white dark:bg-gray-900 shadow px-6 py-3 relative">
       <div className="flex items-center gap-4">
-        <img src="/octopus.svg" alt="TechCorp" className="w-8 h-8" />
+        <img src="/logo.svg" alt="TechCorp" className="w-14 h-14" />
         <span className="font-bold text-xl text-gray-900 dark:text-gray-100">
           TechCorp
         </span>
@@ -38,9 +38,9 @@ export default function Navbar() {
             <li key={item.path}>
               <Link
                 to={item.path}
-                className={`hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer ${
+                className={`hover:text-cyan-700 dark:hover:text-cyan-600 cursor-pointer ${
                   location.pathname === item.path
-                    ? "text-blue-600 dark:text-blue-400 font-semibold"
+                    ? "text-cyan-700 dark:text-cyan-600 font-semibold"
                     : ""
                 }`}
               >
