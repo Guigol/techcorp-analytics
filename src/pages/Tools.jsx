@@ -84,7 +84,8 @@ export default function Tools() {
 
       <DashboardCards />
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-2 border-gray-300 dark:border-gray-600 mt-6">
+      <div 
+        className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-2 border-gray-300 dark:border-gray-600 mt-6">
         <div className="flex justify-between items-center p-4 border-b-2 border-gray-300 dark:border-gray-600">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Tools List</h2>
         </div>

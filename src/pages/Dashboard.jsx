@@ -123,13 +123,13 @@ export default function Dashboard() {
 
       {/* Table */}
       <div
-        className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-2xl overflow-hidden"
-        style={{
-          boxShadow: '0 -6px 8px -2px rgba(0,0,0,0.3), -6px 0 8px -2px rgba(0,0,0,0.2), 6px 0 8px -2px rgba(0,0,0,0.2), 0 4px 6px -2px rgba(0,0,0,0.2)'
-        }}
+        className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-2 border-gray-300 dark:border-gray-600 mt-6"
+        // style={{
+        //   boxShadow: '0 -6px 8px -2px rgba(0,0,0,0.3), -6px 0 8px -2px rgba(0,0,0,0.2), 6px 0 8px -2px rgba(0,0,0,0.2), 0 4px 6px -2px rgba(0,0,0,0.2)'
+        // }}
       >
         {/* Header */}
-        <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between items-center p-4 border-b-2 border-gray-300 dark:border-gray-600">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Tools</h2>
         </div>
 

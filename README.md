@@ -4,6 +4,13 @@
 
 ---
 
+## Technos utilisées
+
+- ReactJs
+- Tailwind
+- json
+---
+
 ## Quick Start
 
 ### Prérequis
@@ -59,24 +66,39 @@ Composants
 
 UI
 
-- react-icons pour les icônes
+- React-icons et lucide-react pour les icônes
 
-- tailwindcss pour le style
+- Tailwindcss pour le style
 
 - Dark mode et thème néon pour les métriques et la table
 
 ### Arborescence
-```
-src/
-├── components/
-│   ├── Navbar.jsx
-│   ├── Sidebar.jsx
-├── pages/
-│   ├── Dashboard.jsx
-│   ├── Tools.jsx
-│   ├── Analytics.jsx
-│   └── Settings.jsx
-└── App.jsx
+
+```text
+
+📂 server_json
+📂 src
+├── 📂 components
+│   ├── 📄 ActionDropdown.jsx
+│   ├── 📄 DashboardCards.jsx
+│   └── 📄 Navbar.jsx 
+├── 📂 context
+│   └── 📄 SearchContext.jsx
+├── 📂 hooks
+│    └── 📄 useTools.js
+├── 📂 pages
+│   ├── 📂 modals
+│   │    ├── 📄 AddToolModal.jsx
+│   │    ├── 📄 ConfirmModal.jsx
+│   │    └── 📄 ToolsDetailsModal.jsx
+│   ├── 📄 Analytics.jsx 
+│   ├── 📄 Dashboard.jsx
+│   ├── 📄 ToolDetails.js
+│   ├── 📄 ToolEdit.js
+│   └── 📄 Tools.jsx
+└── 📄 App.jsx
+
+
 ```
 ---
 
@@ -89,14 +111,17 @@ Vue principale avec :
 
 - Liste des outils récents : filtrable et triable
 
-- Actions rapides : Ajouter, éditer, supprimer, toggle status
+
 
 ### Tools
 
 - Page détaillée (via lien “View all tools →”) avec table complète de tous les outils
 
-- Actions disponibles sur chaque ligne : Voir détails, Modifier, Activer/Désactiver, Sélection pour action en masse (bulk toggle)
+- Actions disponibles sur chaque ligne : Voir détails, Modifier, Activer/Désactiver
 
+### Analytics
+
+-
 ## User Journey (Flow Utilisateur)
 
 ```
