@@ -121,7 +121,14 @@ Vue principale avec :
 
 ### Analytics
 
--
+- Taux d'adoption par les utilisateurs : Par outil avec trends
+
+- Outils les plus/moins utilisés : classement avec mini-graphiques
+
+- Activité du département : Comparaisons visuelles
+
+- Tendances de croissance : Chronologie des nouveaux outils
+
 ## User Journey (Flow Utilisateur)
 
 ```
